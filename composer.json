@@ -1,0 +1,23 @@
+{
+	"name": "rackem/cgi",
+	"type": "library",
+	"description": "Run CGI-based applications with Rackem",
+	"keywords": ["rack","cgi","rackem","server"],
+	"homepage": "http://github.com/tamagokun/rackem-cgi",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Mike Kruk",
+			"email": "tamagokun@gmail.com",
+			"homepage": "http://ripeworks.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"Rackem": "lib"
+		}
+	}
+}
