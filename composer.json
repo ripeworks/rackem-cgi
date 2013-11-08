@@ -3,12 +3,12 @@
 	"type": "library",
 	"description": "Run CGI-based applications with Rackem",
 	"keywords": ["rack","cgi","rackem","server"],
-	"homepage": "http://github.com/tamagokun/rackem-cgi",
+	"homepage": "http://github.com/ripeworks/rackem-cgi",
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "Mike Kruk",
-			"email": "tamagokun@gmail.com",
+			"email": "mike@ripeworks.com",
 			"homepage": "http://ripeworks.com"
 		}
 	],
