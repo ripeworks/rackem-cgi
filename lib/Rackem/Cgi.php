@@ -5,10 +5,10 @@ class Cgi
 {
 	public $app, $public_folder;
 
-	public function __construct($app, $public_folder)
+	public function __construct($app = null, $public_folder = null)
 	{
 		$this->app = $app;
-		$this->public_folder = $public_folder;
+		$this->public_folder = is_null($public_folder) ? getcwd() : $public_folder;
 	}
 
 	public function call($env)

@@ -26,18 +26,22 @@ class Php extends Cgi
 //private
 	protected function run($env, $path)
 	{
+		if(strpos($path, '?') !== false) list($path, $query_string) = explode('?', $path, 2);
 		list($script, $info) = $this->path_parts($path);
 		if(is_dir($script))
 		{
+			if(substr($env['PATH_INFO'], -1, 1) !== '/')
+				return array(301, array('Location'=>$env['PATH_INFO'].'/'), array());
 			$script = rtrim($script,'/').'/index.php';
 			$path = rtrim($path, '/').'/';
+			$info = '/';
 		}
 		$env['REMOTE_ADDR'] = '127.0.0.1';
 		$env['PATH_INFO'] = $info;
 
 		$env['SCRIPT_FILENAME'] = $script;
 		$env['SCRIPT_NAME'] = str_replace($this->public_folder, '', $script);
-		$env['REQUEST_URI'] = str_replace($this->public_folder, '', $path);
+		$env['REQUEST_URI'] = $info;
 		if(isset($env['QUERY_STRING']) && $env['QUERY_STRING'])
 			$env['REQUEST_URI'] .= "?".$env['QUERY_STRING'];
 		putenv("REDIRECT_STATUS=0");
