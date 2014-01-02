@@ -3,12 +3,16 @@ namespace Rackem;
 
 class Php extends Cgi
 {
-	public $php_exec;
+	public $php_exec, $options;
 
-	public function __construct($app, $public_folder, $php_exec='php-cgi')
+	public function __construct($app, $public_folder, $options = array())
 	{
 		parent::__construct($app, $public_folder);
-		$this->php_exec = $php_exec;
+		$defaults = array(
+			'php' => 'php-cgi'
+		);
+		$this->options = array_merge($options, $defaults);
+		$this->php_exec = $options['php'];
 	}
 
 	public function is_valid($path)
