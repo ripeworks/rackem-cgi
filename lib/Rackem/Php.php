@@ -11,8 +11,8 @@ class Php extends Cgi
 		$defaults = array(
 			'php' => 'php-cgi'
 		);
-		$this->options = array_merge($options, $defaults);
-		$this->php_exec = $options['php'];
+		$this->options = array_merge($defaults, $options);
+		$this->php_exec = $this->options['php'];
 	}
 
 	public function is_valid($path)
