@@ -5,7 +5,7 @@ class Rewritable extends Php
 {
 	public $rewrite_base;
 
-	public function __construct($app, $public_folder, $options = array())
+	public function __construct($app = null, $public_folder = null, $options = array())
 	{
 		parent::__construct($app, $public_folder, $options);
 		$defaults = array(

@@ -5,7 +5,7 @@ class Php extends Cgi
 {
 	public $php_exec, $options;
 
-	public function __construct($app, $public_folder, $options = array())
+	public function __construct($app = null, $public_folder = null, $options = array())
 	{
 		parent::__construct($app, $public_folder);
 		$defaults = array(
