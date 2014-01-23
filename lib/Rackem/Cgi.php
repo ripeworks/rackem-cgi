@@ -32,7 +32,7 @@ class Cgi
 		$spec = array(
 			0 => array("pipe", "rb"),
 			1 => array("pipe", "wb"),
-			2 => array("pipe", "wb")
+			2 => STDERR
 		);
 
 		$env['DOCUMENT_ROOT'] = $this->public_folder;
@@ -43,13 +43,10 @@ class Cgi
 		if(($length = strlen($body))) putenv("CONTENT_LENGTH={$length}");
 
 		$proc = proc_open($path, $spec, $pipes);
-		stream_set_blocking($pipes[2], 0);
 		if(!is_resource($proc)) return array(500, array('Content-Type'=>'text/html'), array('<h1>Internal Server Error</h1>'));
 		if(isset($body)) fwrite($pipes[0], $body);
 		$raw = stream_get_contents($pipes[1]);
 		fclose($pipes[1]);
-		echo stream_get_contents($pipes[2]);
-		fclose($pipes[2]);
 		proc_close($proc);
 
 		$headers = array();
